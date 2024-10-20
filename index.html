@@ -47,21 +47,28 @@
 <body>
   <div class="page-container"></div>
 
+  <!-- مشغل الصوت -->
+  <audio id="background-audio" autoplay>
+    <source src="" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
   <script>
     const pages = [
-      { background: "https://www.mediafire.com/convkey/16ee/0l7k2kdo59einaezg.jpg?size_id=f" },
-      { background: "https://www.mediafire.com/convkey/4b07/66okc1e3szc08z4zg.jpg?size_id=f" },
-      { background: "https://www.mediafire.com/convkey/3f1b/pv3j7vupvtm4xu4zg.jpg?size_id=f" },
-      { background: "https://www.mediafire.com/convkey/9009/shtpeihdp6muaoszg.jpg?size_id=f" },
-      { background: "https://www.mediafire.com/convkey/bc9c/iekai0lwb23o7cyzg.jpg?size_id=f" },
-      { background: "https://www.mediafire.com/convkey/9a55/2gldjg9kcmsk1iqzg.jpg?size_id=f" },
-      { background: "https://www.mediafire.com/convkey/6cd8/mxdkek8723l7sqizg.jpg?size_id=f" },
-      { background: "https://www.mediafire.com/convkey/8c99/3eoyef4z7e3lbu2zg.jpg?size_id=f" }
+      { background: "https://www.mediafire.com/convkey/16ee/0l7k2kdo59einaezg.jpg?size_id=f", audio: "https://pouch.jumpshare.com/preview/3CFiery8bs3U-NokoYkT2ZIICkxj-RTGCreHVxQUDWsRTbPvxLQ1IEniLQDu1qBGiKI3OVGBNIdJGDyWoqaetE4uNYeC-uqwuTqEmfLXXeEG4LA8P4swfF-77I8TAW04UE8L8J2gpAYZ-wUDmyWnE26yjbN-I2pg_cnoHs_AmgI.mp3" },
+      { background: "https://www.mediafire.com/convkey/4b07/66okc1e3szc08z4zg.jpg?size_id=f", audio: "https://pouch.jumpshare.com/preview/mMX-NlW4sL2T7laF4p-4ceNC8JbnkixeLbKIwNvj6JPqIDjrfODLk6_oxTu5kVbKyTo8Qy40QtqP3jzrNebLibrc5MimyxPDhEfb2dPllQMUgFvlj2wnyIcBBtYv7dG2-6mlCKvS5RlCT0BEDTFF5W6yjbN-I2pg_cnoHs_AmgI.mp3" },
+      { background: "https://www.mediafire.com/convkey/3f1b/pv3j7vupvtm4xu4zg.jpg?size_id=f", audio: "https://pouch.jumpshare.com/preview/hkLKEIGN_3O_DUT2CEaRGG48E1TkmGHZnd1cxA3tyOoN7ut4reZ_lKIwUeEHm67vrAMmQy18K90tnBO9PHQedUatRRJCx7HVNklCQDzi7Wxon_ILyiWRDp4I-NsVPPXXfBRkL3D63g5FfvPwyUvIAm6yjbN-I2pg_cnoHs_AmgI.mp3" },
+      { background: "https://www.mediafire.com/convkey/9009/shtpeihdp6muaoszg.jpg?size_id=f", audio: "https://pouch.jumpshare.com/preview/O-21Nvnj37hnc1sGgzxssgEj2z7T0my0CRC9q29bTqm7q2TMel0G7JUZ95tIsG2gG9lDecmXjsuCPX-YCxh-nNY7ROGqhV1p5iBhagMLeOLZ_111a1WZTKaoQ19HzgnVKgUFggAOuzyOCZUdsZ2MRW6yjbN-I2pg_cnoHs_AmgI.mp3" },
+      { background: "https://www.mediafire.com/convkey/bc9c/iekai0lwb23o7cyzg.jpg?size_id=f", audio: "https://pouch.jumpshare.com/preview/Rw4V19EtqzgQLQ4dSQLQAO4Ya2wsvMp5BwC8CetYWrkw_x7ZJesEh6VdX8hdFKFyNLQDi9aTbVHBtjE9HrRN3xSxq6bKgqrpHJc6IiMjRWux0-PtLU7RgbCpVx_lScpxjmBQjanlkIhILRUETXIWRG6yjbN-I2pg_cnoHs_AmgI.mp3" },
+      { background: "https://www.mediafire.com/convkey/f870/2i7hohq9lnjwtj1zg.jpg?size_id=f", audio: "https://pouch.jumpshare.com/preview/CfCxdTVzfaMMn14J-xG-sgAnOwpYknBru7RjxT_OX5ke5XJ9BTU53tTm5l8jjQmumVQHN77p9Q8f4MdmpnhydFaENihd5qorytQCtaRAsOoYP_yec-6OVGdmli9oSZ1zX5-xt7k6mzr2Hp25D1ePaG6yjbN-I2pg_cnoHs_AmgI.mp3" },
+      { background: "https://www.mediafire.com/convkey/6cd8/mxdkek8723l7sqizg.jpg?size_id=f", audio: "https://pouch.jumpshare.com/preview/pPPAbib_wzjnFVqxYAi5q6O64gQ2UoBJK2f6FeU6QPq2wFkKs9OATagIugG2GdhYz8JUsHMOqM_hjuUWjU3ioolfhDAtXU-slwdr5Y4IuTHS5cSbonWF7V_DefI5yHcpTJ5_flPWQYDbNMev3ow2jG6yjbN-I2pg_cnoHs_AmgI.mp3" },
+      { background: "https://www.mediafire.com/convkey/8c99/3eoyef4z7e3lbu2zg.jpg?size_id=f", audio: "https://pouch.jumpshare.com/preview/Vwob_pX7lWl9TXd-wCwIL2t0XUYQBLiCvdWUtb5fGBRZJM1Zzi-OQoGwkI9s7g2Oj1f0Yuty-9G24kei7BHi6RctaV7CAaFOjTJmx2SaTJ4Xhn3nrN7VOxT5LcXJMl9hD8GVrANuLdj-jARAR4lXh26yjbN-I2pg_cnoHs_AmgI.mp3" }
     ];
 
     let currentPage = 0;
 
     const pageContainer = document.querySelector('.page-container');
+    const audioElement = document.getElementById('background-audio');
 
     document.body.addEventListener('click', nextPage);
 
@@ -96,6 +103,8 @@
 
     function updatePage() {
       pageContainer.style.backgroundImage = `url('${pages[currentPage].background}')`;
+      audioElement.src = pages[currentPage].audio;
+      audioElement.play(); // التأكد من تشغيل الصوت تلقائيًا عند تغيير الصفحة
     }
 
     updatePage();

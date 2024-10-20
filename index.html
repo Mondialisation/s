@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La_Mondialisation</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden; /* لمنع التمرير */
+    }
+
+    .page-container {
+      background-size: contain; /* الوضع العمودي */
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100%;
+      transition: background-image 2s ease-in-out; /* زيادة مدة الأنميشن */
+    }
+
+    /* الوسائط لتحديد العرض العمودي فقط */
+    @media (orientation: portrait) {
+      .page-container {
+        width: 100%; /* حدد العرض المناسب للصورة في الوضع العمودي */
+        height: 50%; /* حدد الارتفاع المناسب للصورة في الوضع العمودي */
+        margin: auto; /* لجعل الصورة تتمركز في منتصف الشاشة */
+        position: absolute;
+        top: 0; 
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+
+    /* الوسائط لتحديد الوضع الأفقي */
+    @media (orientation: landscape) {
+      .page-container {
+        background-size: 100vw 100vh; /* ملء العرض مع الحفاظ على الارتفاع */
+        background-position: center; /* تمركز الخلفية إذا زاد الطول عن حجم الشاشة */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container"></div>
+
+  <script>
+    const pages = [
+      { background: "https://www.mediafire.com/convkey/16ee/0l7k2kdo59einaezg.jpg?size_id=f" },
+      { background: "https://www.mediafire.com/convkey/4b07/66okc1e3szc08z4zg.jpg?size_id=f" },
+      { background: "https://www.mediafire.com/convkey/3f1b/pv3j7vupvtm4xu4zg.jpg?size_id=f" },
+      { background: "https://www.mediafire.com/convkey/9009/shtpeihdp6muaoszg.jpg?size_id=f" },
+      { background: "https://www.mediafire.com/convkey/bc9c/iekai0lwb23o7cyzg.jpg?size_id=f" },
+      { background: "https://www.mediafire.com/convkey/9a55/2gldjg9kcmsk1iqzg.jpg?size_id=f" },
+      { background: "https://www.mediafire.com/convkey/6cd8/mxdkek8723l7sqizg.jpg?size_id=f" },
+      { background: "https://www.mediafire.com/convkey/8c99/3eoyef4z7e3lbu2zg.jpg?size_id=f" }
+    ];
+
+    let currentPage = 0;
+
+    const pageContainer = document.querySelector('.page-container');
+
+    document.body.addEventListener('click', nextPage);
+
+    document.body.addEventListener('touchstart', handleTouchStart, false);
+    document.body.addEventListener('touchend', handleTouchEnd, false);
+
+    let startX = 0;
+    let endX = 0;
+
+    function handleTouchStart(e) {
+      startX = e.changedTouches[0].screenX;
+    }
+
+    function handleTouchEnd(e) {
+      endX = e.changedTouches[0].screenX;
+      if (endX < startX) {
+        nextPage();
+      } else if (endX > startX) {
+        prevPage();
+      }
+    }
+
+    function nextPage() {
+      currentPage = (currentPage + 1) % pages.length;
+      updatePage();
+    }
+
+    function prevPage() {
+      currentPage = (currentPage - 1 + pages.length) % pages.length;
+      updatePage();
+    }
+
+    function updatePage() {
+      pageContainer.style.backgroundImage = `url('${pages[currentPage].background}')`;
+    }
+
+    updatePage();
+  </script>
+</body>
+</html>
